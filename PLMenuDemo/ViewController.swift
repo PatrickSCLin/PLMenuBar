@@ -13,43 +13,40 @@ class ViewController: UIViewController, PLMenuBarDelegate {
     
     var menuBar: PLMenuBarView!;
     
+    var menuDetailItems: [PLMenuDetailItem]!;
+    
     func numberOfItemsInMenubar() -> Int {
         
-        return 2;
+        return self.menuDetailItems.count;
         
     }
     
     func menuBar(menuBar: PLMenuBarView, titleForItemAtIndex index: Int) -> String {
         
-        var title = "";
+        return self.menuDetailItems[index].title;
         
-        switch index {
-            
-        case 0:
-            
-            title = "Stream"
-            
-            break;
-            
-        case 1:
-            
-            title = "Audio"
-            
-            break;
-            
-        default:
-            
-            break;
-            
-        }
+    }
+    
+    func menuBar(menuBar: PLMenuBarView, detailItemForItemAtIndex index: Int) -> PLMenuDetailItem {
         
-        return title;
+        return self.menuDetailItems[index];
         
     }
 
     override func viewDidLoad() {
         
         super.viewDidLoad();
+        
+        let testString = "The audio element is used to play background audio for a document when the document is the top-most document in the navigation stack. Each document page that plays audio in the background must have its own audio element. If the same URL is used between pages, audio will continue to play when the new page is displayed. The audio element only supports unencrypted audio. audio can contain the following elements:";
+        
+        self.menuDetailItems = [
+            PLMenuDetailDescItem(title: "Info", text: testString),
+            PLMenuDetailItem(title: "Empty"),
+            PLMenuDetailComboItem(title: "Options", items: [
+                PLMenuComboSection(title: "Stream", items: ["Stream1", "Stream2"], preferredIndex: 1),
+                PLMenuComboSection(title: "Audio", items: ["On", "Off"], preferredIndex: 1)
+            ])
+        ];
         
         self.menuBar = PLMenuBarView();
         

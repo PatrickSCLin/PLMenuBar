@@ -7,6 +7,14 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		CD7C4FCA1CBDF5B600D84809 /* PLMenuBar.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CD8C3CE61CBD39FB000D394F /* PLMenuBar.framework */; };
+		CD7C4FCB1CBDF5B600D84809 /* PLMenuBar.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = CD8C3CE61CBD39FB000D394F /* PLMenuBar.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		CD7C50511CBE1F7B00D84809 /* PLBackdropView.h in Headers */ = {isa = PBXBuildFile; fileRef = CD7C504B1CBE1F7B00D84809 /* PLBackdropView.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		CD7C50521CBE1F7B00D84809 /* PLBackdropView.m in Sources */ = {isa = PBXBuildFile; fileRef = CD7C504C1CBE1F7B00D84809 /* PLBackdropView.m */; };
+		CD7C50531CBE1F7B00D84809 /* PLBackdropViewSettings.h in Headers */ = {isa = PBXBuildFile; fileRef = CD7C504D1CBE1F7B00D84809 /* PLBackdropViewSettings.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		CD7C50541CBE1F7B00D84809 /* PLBackdropViewSettings.m in Sources */ = {isa = PBXBuildFile; fileRef = CD7C504E1CBE1F7B00D84809 /* PLBackdropViewSettings.m */; };
+		CD7C50551CBE1F7B00D84809 /* PLBackdropViewSettingsATVMenuLight.h in Headers */ = {isa = PBXBuildFile; fileRef = CD7C504F1CBE1F7B00D84809 /* PLBackdropViewSettingsATVMenuLight.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		CD7C50561CBE1F7B00D84809 /* PLBackdropViewSettingsATVMenuLight.m in Sources */ = {isa = PBXBuildFile; fileRef = CD7C50501CBE1F7B00D84809 /* PLBackdropViewSettingsATVMenuLight.m */; };
 		CD8C3CEA1CBD39FB000D394F /* PLMenuBar.h in Headers */ = {isa = PBXBuildFile; fileRef = CD8C3CE91CBD39FB000D394F /* PLMenuBar.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		CD8C3CF11CBD39FB000D394F /* PLMenuBar.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CD8C3CE61CBD39FB000D394F /* PLMenuBar.framework */; };
 		CD8C3CF61CBD39FB000D394F /* PLMenuBarTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD8C3CF51CBD39FB000D394F /* PLMenuBarTests.swift */; };
@@ -15,7 +23,6 @@
 		CD8C3D0C1CBD3B24000D394F /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CD8C3D0A1CBD3B24000D394F /* Main.storyboard */; };
 		CD8C3D0E1CBD3B24000D394F /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CD8C3D0D1CBD3B24000D394F /* Assets.xcassets */; };
 		CD8C3D141CBD3B95000D394F /* PLMenuBarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD8C3D131CBD3B95000D394F /* PLMenuBarView.swift */; };
-		CD8C3D171CBD3C91000D394F /* PLMenuBar.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CD8C3CE61CBD39FB000D394F /* PLMenuBar.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -35,7 +42,27 @@
 		};
 /* End PBXContainerItemProxy section */
 
+/* Begin PBXCopyFilesBuildPhase section */
+		CD7C4FCC1CBDF5B600D84809 /* Embed Frameworks */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+				CD7C4FCB1CBDF5B600D84809 /* PLMenuBar.framework in Embed Frameworks */,
+			);
+			name = "Embed Frameworks";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
 /* Begin PBXFileReference section */
+		CD7C504B1CBE1F7B00D84809 /* PLBackdropView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PLBackdropView.h; sourceTree = "<group>"; };
+		CD7C504C1CBE1F7B00D84809 /* PLBackdropView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PLBackdropView.m; sourceTree = "<group>"; };
+		CD7C504D1CBE1F7B00D84809 /* PLBackdropViewSettings.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PLBackdropViewSettings.h; sourceTree = "<group>"; };
+		CD7C504E1CBE1F7B00D84809 /* PLBackdropViewSettings.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PLBackdropViewSettings.m; sourceTree = "<group>"; };
+		CD7C504F1CBE1F7B00D84809 /* PLBackdropViewSettingsATVMenuLight.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PLBackdropViewSettingsATVMenuLight.h; sourceTree = "<group>"; };
+		CD7C50501CBE1F7B00D84809 /* PLBackdropViewSettingsATVMenuLight.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PLBackdropViewSettingsATVMenuLight.m; sourceTree = "<group>"; };
 		CD8C3CE61CBD39FB000D394F /* PLMenuBar.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = PLMenuBar.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		CD8C3CE91CBD39FB000D394F /* PLMenuBar.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PLMenuBar.h; sourceTree = "<group>"; };
 		CD8C3CEB1CBD39FB000D394F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -71,13 +98,26 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				CD8C3D171CBD3C91000D394F /* PLMenuBar.framework in Frameworks */,
+				CD7C4FCA1CBDF5B600D84809 /* PLMenuBar.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		CD7C504A1CBE1F7B00D84809 /* PLBackdropView */ = {
+			isa = PBXGroup;
+			children = (
+				CD7C504B1CBE1F7B00D84809 /* PLBackdropView.h */,
+				CD7C504C1CBE1F7B00D84809 /* PLBackdropView.m */,
+				CD7C504D1CBE1F7B00D84809 /* PLBackdropViewSettings.h */,
+				CD7C504E1CBE1F7B00D84809 /* PLBackdropViewSettings.m */,
+				CD7C504F1CBE1F7B00D84809 /* PLBackdropViewSettingsATVMenuLight.h */,
+				CD7C50501CBE1F7B00D84809 /* PLBackdropViewSettingsATVMenuLight.m */,
+			);
+			path = PLBackdropView;
+			sourceTree = "<group>";
+		};
 		CD8C3CDC1CBD39FB000D394F = {
 			isa = PBXGroup;
 			children = (
@@ -101,6 +141,7 @@
 		CD8C3CE81CBD39FB000D394F /* PLMenuBar */ = {
 			isa = PBXGroup;
 			children = (
+				CD7C504A1CBE1F7B00D84809 /* PLBackdropView */,
 				CD8C3CE91CBD39FB000D394F /* PLMenuBar.h */,
 				CD8C3CEB1CBD39FB000D394F /* Info.plist */,
 				CD8C3D131CBD3B95000D394F /* PLMenuBarView.swift */,
@@ -136,7 +177,10 @@
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				CD7C50551CBE1F7B00D84809 /* PLBackdropViewSettingsATVMenuLight.h in Headers */,
 				CD8C3CEA1CBD39FB000D394F /* PLMenuBar.h in Headers */,
+				CD7C50511CBE1F7B00D84809 /* PLBackdropView.h in Headers */,
+				CD7C50531CBE1F7B00D84809 /* PLBackdropViewSettings.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -186,6 +230,7 @@
 				CD8C3D001CBD3B24000D394F /* Sources */,
 				CD8C3D011CBD3B24000D394F /* Frameworks */,
 				CD8C3D021CBD3B24000D394F /* Resources */,
+				CD7C4FCC1CBDF5B600D84809 /* Embed Frameworks */,
 			);
 			buildRules = (
 			);
@@ -269,6 +314,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				CD7C50541CBE1F7B00D84809 /* PLBackdropViewSettings.m in Sources */,
+				CD7C50561CBE1F7B00D84809 /* PLBackdropViewSettingsATVMenuLight.m in Sources */,
+				CD7C50521CBE1F7B00D84809 /* PLBackdropView.m in Sources */,
 				CD8C3D141CBD3B95000D394F /* PLMenuBarView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -464,6 +512,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = "App Icon & Top Shelf Image";
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				EMBEDDED_CONTENT_CONTAINS_SWIFT = YES;
 				INFOPLIST_FILE = PLMenuDemo/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.storeboot.PLMenuDemo;
@@ -476,6 +525,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = "App Icon & Top Shelf Image";
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				EMBEDDED_CONTENT_CONTAINS_SWIFT = YES;
 				INFOPLIST_FILE = PLMenuDemo/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.storeboot.PLMenuDemo;
@@ -502,6 +552,7 @@
 				CD8C3CFC1CBD39FB000D394F /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		CD8C3CFD1CBD39FB000D394F /* Build configuration list for PBXNativeTarget "PLMenuBarTests" */ = {
 			isa = XCConfigurationList;
@@ -510,6 +561,7 @@
 				CD8C3CFF1CBD39FB000D394F /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		CD8C3D101CBD3B24000D394F /* Build configuration list for PBXNativeTarget "PLMenuDemo" */ = {
 			isa = XCConfigurationList;
@@ -518,6 +570,7 @@
 				CD8C3D121CBD3B24000D394F /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

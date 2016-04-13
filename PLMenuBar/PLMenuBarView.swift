@@ -12,17 +12,93 @@
     
     func menuBar(menuBar: PLMenuBarView, titleForItemAtIndex index: Int) -> String;
     
+    optional func menuBar(menuBar: PLMenuBarView, detailItemForItemAtIndex index: Int) -> PLMenuDetailItem;
+    
     optional func menuBar(menuBar: PLMenuBarView, didSelectItemAtIndex index: Int);
+    
+    optional func menuBar(menuBar: PLMenuBarView, didSelectDetailAtRow row: Int, Section section: Int, forItemAtIndex index: Int);
     
 }
 
-public class PLMenuBarView: UIView, UITabBarDelegate {
+public class PLMenuComboSection: NSObject {
+    
+    public var preferredIndex: Int = -1;
+    
+    public var title: String = "";
+    
+    public var items: [String] = [String]();
+    
+    public init(title: String = "", items: [String], preferredIndex: Int = -1) {
+        
+        self.title.appendContentsOf(title);
+        
+        self.items.appendContentsOf(items);
+        
+        self.preferredIndex = preferredIndex;
+        
+    }
+    
+}
+
+public class PLMenuDetailComboItem: PLMenuDetailItem {
+    
+    public var items: [PLMenuComboSection] = [PLMenuComboSection]();
+    
+    public init(title: String = "", items: [PLMenuComboSection]) {
+        
+        super.init(title: title);
+        
+        self.items.appendContentsOf(items);
+        
+    }
+    
+}
+
+public class PLMenuDetailDescItem: PLMenuDetailItem {
+    
+    public var text: String = "";
+    
+    public init(title: String = "", text: String = "") {
+        
+        super.init(title: title);
+        
+        self.text.appendContentsOf(text);
+        
+    }
+    
+}
+
+public class PLMenuDetailItem: NSObject {
+    
+    public var title: String = "";
+    
+    public init(title: String = "") {
+        
+        self.title.appendContentsOf(title);
+        
+    }
+    
+}
+
+public class PLMenuBarView: UIView, UITabBarDelegate, UITableViewDelegate {
+    
+    private let MenuBarMinHeight: CGFloat = 140;
+    
+    private let MenuBarDetailMinHeight: CGFloat = 210;
+    
+    private let MenuBarDetailPadding: CGFloat = 150;
+    
+    private let MenuBarBorderHeight: CGFloat = 1.5;
+    
+    private var shouldShowDetailView: Bool = false;
     
     private var menuBar: UITabBar!;
     
-    private var detailView: UIVisualEffectView!;
+    private var detailView: PLBackdropView!;
     
     private var borderView: UIView!;
+    
+    private var contentView: UIView?;
     
     public var delegate: PLMenuBarDelegate?;
     
@@ -30,11 +106,59 @@ public class PLMenuBarView: UIView, UITabBarDelegate {
     
     public func tabBar(tabBar: UITabBar, didSelectItem item: UITabBarItem) {
         
-        self.frame = CGRectMake(0, 0, self.superview!.frame.size.width, 300);
-     
-        self.detailView.frame = CGRectMake(0, 140, self.superview!.frame.size.width, 160);
+        let index = item.tag;
         
-        self.borderView.frame = CGRectMake(0, 140, self.superview!.frame.size.width, 2);
+        if self.delegate == nil { return; }
+        
+        let detailItem = self.delegate!.menuBar?(self, detailItemForItemAtIndex: index);
+        
+        if detailItem != nil && ((detailItem! is PLMenuDetailDescItem) || (detailItem! is PLMenuDetailComboItem)) {
+            
+            if detailItem is PLMenuDetailDescItem {
+                
+                if self.contentView != nil {
+                    
+                    self.contentView?.removeFromSuperview();
+                    
+                    self.contentView = nil;
+                
+                }
+                
+                let content: UILabel = UILabel(frame: CGRectMake(self.MenuBarDetailPadding, 0, self.bounds.size.width - (self.MenuBarDetailPadding * 2), self.MenuBarDetailMinHeight));
+                
+                content.numberOfLines = 0;
+                
+                content.font = UIFont.systemFontOfSize(18);
+                
+                content.textAlignment = NSTextAlignment.Center;
+                
+                content.text = (detailItem as! PLMenuDetailDescItem).text;
+                
+                self.contentView = content;
+                
+                self.detailView.addSubview(self.contentView!);
+                
+            }
+            
+            else if detailItem is PLMenuDetailComboItem {
+                
+                
+                
+            }
+            
+            self.shouldShowDetailView = true;
+            
+            self.frame = CGRectMake(0, 0, (self.superview?.frame.size.width)!, MenuBarMinHeight + MenuBarBorderHeight);
+            
+        }
+        
+        else {
+            
+            self.shouldShowDetailView = false;
+            
+            self.frame = CGRectMake(0, 0, (self.superview?.frame.size.width)!, MenuBarMinHeight);
+            
+        }
         
     }
     
@@ -44,7 +168,47 @@ public class PLMenuBarView: UIView, UITabBarDelegate {
         
         super.layoutSubviews();
         
-        self.menuBar.frame = CGRectMake(0, 0, self.frame.size.width, 140);
+        if self.shouldShowDetailView == true {
+            
+            self.borderView.hidden = false;
+            
+            UIView.animateWithDuration(0.3, delay: 0, options: UIViewAnimationOptions.CurveEaseIn, animations: {
+                
+                self.menuBar.frame = CGRectMake(0, 0, self.frame.size.width, self.MenuBarMinHeight);
+                
+                self.detailView.frame = CGRectMake(0, self.MenuBarMinHeight, self.frame.size.width, self.MenuBarDetailMinHeight);
+                
+                self.borderView.frame = CGRectMake(0, self.MenuBarMinHeight, self.frame.size.width, self.MenuBarBorderHeight);
+                
+                self.borderView.alpha = 1;
+                
+            }, completion: { (isCompleted: Bool) in
+                    
+                
+                    
+            });
+            
+        }
+        
+        else {
+            
+            UIView.animateWithDuration(0.3, delay: 0, options: UIViewAnimationOptions.CurveEaseIn, animations: {
+                
+                self.menuBar.frame = CGRectMake(0, 0, self.frame.size.width, self.MenuBarMinHeight);
+                
+                self.detailView.frame = CGRectMake(0, self.MenuBarMinHeight, self.frame.size.width, 0);
+                
+                self.borderView.frame = CGRectMake(0, self.MenuBarMinHeight, self.frame.size.width, self.MenuBarBorderHeight);
+                
+                self.borderView.alpha = 0;
+                
+            }, completion: { (isCompleted: Bool) in
+                    
+                self.borderView.hidden = true;
+                    
+            });
+            
+        }
         
     }
 
@@ -54,15 +218,15 @@ public class PLMenuBarView: UIView, UITabBarDelegate {
         
         if newSuperview != nil {
             
-            self.frame = CGRectMake(0, 0, newSuperview!.frame.size.width, 140);
+            self.frame = CGRectMake(0, 0, newSuperview!.frame.size.width, MenuBarMinHeight);
             
             if delegate != nil {
                 
                 var items: [UITabBarItem] = [UITabBarItem]();
                 
-                let countOfItems = self.delegate?.numberOfItemsInMenubar();
+                let countOfItems = self.delegate!.numberOfItemsInMenubar();
                 
-                for (var i = 0; i < countOfItems; i++) {
+                for i in 0..<countOfItems {
                     
                     let titleOfItem = self.delegate?.menuBar(self, titleForItemAtIndex: i);
                     
@@ -90,15 +254,19 @@ public class PLMenuBarView: UIView, UITabBarDelegate {
         
         self.addSubview(self.menuBar);
         
-        self.detailView = UIVisualEffectView(effect: UIVibrancyEffect(forBlurEffect: UIBlurEffect(style: UIBlurEffectStyle.Light)));
+        let settings = PLBackdropViewSettingsATVMenuLight();
         
-        self.detailView.backgroundColor = UIColor(red: 180/255, green: 189/255, blue: 190/255, alpha: 0.74);
+        self.detailView = PLBackdropView(frame: CGRectZero, settings: settings);
+        
+        self.detailView.subviews[0].autoresizingMask = UIViewAutoresizing.FlexibleWidth.union(UIViewAutoresizing.FlexibleHeight);
+        
+        self.detailView.backgroundColor = UIColor(white: 1, alpha: 0.3);
         
         self.addSubview(self.detailView);
         
         self.borderView = UIView();
         
-        self.borderView.backgroundColor = UIColor(red: 180/255, green: 189/255, blue: 190/255, alpha: 1);
+        self.borderView.backgroundColor = UIColor(red: 127/255, green: 127/255, blue: 127/255, alpha: 0.8);
         
         self.addSubview(self.borderView);
         
