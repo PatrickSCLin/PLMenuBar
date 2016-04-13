@@ -15,18 +15,8 @@ class PLMenuDetailDescView: PLMenuDetailView {
     override func layoutSubviews() {
         
         super.layoutSubviews();
-        
-        CGRectMake(PLMenuBarView.MenuBarDetailPadding, 0, self.bounds.size.width - (PLMenuBarView.MenuBarDetailPadding * 2), PLMenuBarView.MenuBarDetailMinHeight)
-        
-    }
-    
-    override func willMoveToSuperview(newSuperview: UIView?) {
-        
-        if newSuperview != nil {
-            
-            
-            
-        }
+     
+        self.contentViews[0].frame = self.bounds;
         
     }
     
@@ -46,6 +36,8 @@ class PLMenuDetailDescView: PLMenuDetailView {
         
         self.addSubview(content);
         
+        self.contentViews.append(content);
+        
     }
     
     convenience init(text: String) {
@@ -53,6 +45,8 @@ class PLMenuDetailDescView: PLMenuDetailView {
         self.init(frame: CGRectZero);
         
         self.text.appendContentsOf(text);
+        
+        self.commonInit();
         
     }
 

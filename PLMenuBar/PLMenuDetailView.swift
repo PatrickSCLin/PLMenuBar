@@ -8,6 +8,6 @@
 
 class PLMenuDetailView: UIView {
     
-    
+    var contentViews: [UIView] = [UIView]();
 
 }

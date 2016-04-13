@@ -28,6 +28,12 @@ public class PLMenuComboSection: NSObject {
     
     public var items: [String] = [String]();
     
+    public override init() {
+        
+        super.init();
+        
+    }
+    
     public init(title: String = "", items: [String], preferredIndex: Int = -1) {
         
         self.title.appendContentsOf(title);
@@ -122,57 +128,27 @@ public class PLMenuBarView: UIView, UITabBarDelegate, UITableViewDelegate {
                 
             }
             
+            let contentFrame = CGRectMake(PLMenuBarView.MenuBarDetailPadding, 0, self.detailView.bounds.size.width - (PLMenuBarView.MenuBarDetailPadding * 2), PLMenuBarView.MenuBarDetailMinHeight);
+            
             if detailItem is PLMenuDetailDescItem {
                 
-                
+                self.contentView = PLMenuDetailDescView(text: (detailItem as! PLMenuDetailDescItem).text);
                 
             }
             
             else if detailItem is PLMenuDetailComboItem {
                 
-                let detailItem = (detailItem as! PLMenuDetailComboItem);
-                
-                let contentWidth = (self.bounds.size.width - (self.MenuBarDetailPadding * 2)) / CGFloat(detailItem.items.count);
-                
-                for (index, item) in detailItem.items.enumerate() {
-                    
-                    let content = UIView(frame: CGRectMake(self.MenuBarDetailPadding + contentWidth * CGFloat(index), 0, contentWidth, self.MenuBarDetailMinHeight));
-                    
-                    let titleOfSection: UILabel = UILabel(frame: CGRectMake(30, 20, content.bounds.size.width - 30, 40));
-                    
-                    titleOfSection.font = UIFont.boldSystemFontOfSize(18);
-                    
-                    titleOfSection.alpha = 0.4;
-                    
-                    titleOfSection.textAlignment = NSTextAlignment.Left;
-                    
-                    titleOfSection.text = item.title;
-                    
-                    content.addSubview(titleOfSection);
-                    
-                    for (index, item) in item.items.enumerate() {
-                        
-                        let titleOfSection: UILabel = UILabel(frame: CGRectMake(30, 20, content.bounds.size.width - 30, 40));
-                        
-                        titleOfSection.font = UIFont.boldSystemFontOfSize(18);
-                        
-                        titleOfSection.alpha = 0.4;
-                        
-                        titleOfSection.textAlignment = NSTextAlignment.Left;
-                        
-                        titleOfSection.text = item;
-                        
-                    }
-                    
-                    self.detailView.addSubview(content);
-                    
-                }
+                self.contentView = PLMenuDetailComboView(items: (detailItem as! PLMenuDetailComboItem).items);
                 
             }
             
+            self.contentView!.frame = contentFrame;
+            
+            self.detailView.addSubview(self.contentView!);
+            
             self.shouldShowDetailView = true;
             
-            self.frame = CGRectMake(0, 0, (self.superview?.frame.size.width)!, MenuBarMinHeight + MenuBarBorderHeight);
+            self.frame = CGRectMake(0, 0, (self.superview?.frame.size.width)!, PLMenuBarView.MenuBarMinHeight + PLMenuBarView.MenuBarBorderHeight);
             
         }
         
@@ -180,7 +156,7 @@ public class PLMenuBarView: UIView, UITabBarDelegate, UITableViewDelegate {
             
             self.shouldShowDetailView = false;
             
-            self.frame = CGRectMake(0, 0, (self.superview?.frame.size.width)!, MenuBarMinHeight);
+            self.frame = CGRectMake(0, 0, (self.superview?.frame.size.width)!, PLMenuBarView.MenuBarMinHeight);
             
         }
         
@@ -198,11 +174,11 @@ public class PLMenuBarView: UIView, UITabBarDelegate, UITableViewDelegate {
             
             UIView.animateWithDuration(0.3, delay: 0, options: UIViewAnimationOptions.CurveEaseIn, animations: {
                 
-                self.menuBar.frame = CGRectMake(0, 0, self.frame.size.width, self.MenuBarMinHeight);
+                self.menuBar.frame = CGRectMake(0, 0, self.frame.size.width, PLMenuBarView.MenuBarMinHeight);
                 
-                self.detailView.frame = CGRectMake(0, self.MenuBarMinHeight, self.frame.size.width, self.MenuBarDetailMinHeight);
+                self.detailView.frame = CGRectMake(0, PLMenuBarView.MenuBarMinHeight, self.frame.size.width, PLMenuBarView.MenuBarDetailMinHeight);
                 
-                self.borderView.frame = CGRectMake(0, self.MenuBarMinHeight, self.frame.size.width, self.MenuBarBorderHeight);
+                self.borderView.frame = CGRectMake(0, PLMenuBarView.MenuBarMinHeight, self.frame.size.width, PLMenuBarView.MenuBarBorderHeight);
                 
                 self.borderView.alpha = 1;
                 
@@ -218,11 +194,11 @@ public class PLMenuBarView: UIView, UITabBarDelegate, UITableViewDelegate {
             
             UIView.animateWithDuration(0.3, delay: 0, options: UIViewAnimationOptions.CurveEaseIn, animations: {
                 
-                self.menuBar.frame = CGRectMake(0, 0, self.frame.size.width, self.MenuBarMinHeight);
+                self.menuBar.frame = CGRectMake(0, 0, self.frame.size.width, PLMenuBarView.MenuBarMinHeight);
                 
-                self.detailView.frame = CGRectMake(0, self.MenuBarMinHeight, self.frame.size.width, 0);
+                self.detailView.frame = CGRectMake(0, PLMenuBarView.MenuBarMinHeight, self.frame.size.width, 0);
                 
-                self.borderView.frame = CGRectMake(0, self.MenuBarMinHeight, self.frame.size.width, self.MenuBarBorderHeight);
+                self.borderView.frame = CGRectMake(0, PLMenuBarView.MenuBarMinHeight, self.frame.size.width, PLMenuBarView.MenuBarBorderHeight);
                 
                 self.borderView.alpha = 0;
                 
@@ -242,7 +218,7 @@ public class PLMenuBarView: UIView, UITabBarDelegate, UITableViewDelegate {
         
         if newSuperview != nil {
             
-            self.frame = CGRectMake(0, 0, newSuperview!.frame.size.width, MenuBarMinHeight);
+            self.frame = CGRectMake(0, 0, newSuperview!.frame.size.width, PLMenuBarView.MenuBarMinHeight);
             
             if delegate != nil {
                 
