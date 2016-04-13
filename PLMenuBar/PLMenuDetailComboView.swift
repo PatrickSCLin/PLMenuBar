@@ -6,8 +6,16 @@
 //  Copyright © 2016 Patrick Lin. All rights reserved.
 //
 
-import Cocoa
+class PLMenuDetailComboView: PLMenuDetailView {
 
-class PLMenuDetailComboView: UIView {
-
+    var items: [PLMenuComboSection] = [PLMenuComboSection]();
+    
+    convenience init(items: [PLMenuComboSection]) {
+        
+        self.init(frame: CGRectZero);
+        
+        self.items.appendContentsOf(items);
+        
+    }
+    
 }

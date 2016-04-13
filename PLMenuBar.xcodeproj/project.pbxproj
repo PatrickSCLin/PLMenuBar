@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		CD4785281CBE628E00DCA1D3 /* PLMenuDetailComboView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD4785271CBE628E00DCA1D3 /* PLMenuDetailComboView.swift */; };
+		CD47852A1CBE62C900DCA1D3 /* PLMenuDetailDescView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD4785291CBE62C900DCA1D3 /* PLMenuDetailDescView.swift */; };
+		CD47852C1CBE655900DCA1D3 /* PLMenuDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD47852B1CBE655900DCA1D3 /* PLMenuDetailView.swift */; };
 		CD7C4FCA1CBDF5B600D84809 /* PLMenuBar.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CD8C3CE61CBD39FB000D394F /* PLMenuBar.framework */; };
 		CD7C4FCB1CBDF5B600D84809 /* PLMenuBar.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = CD8C3CE61CBD39FB000D394F /* PLMenuBar.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		CD7C50511CBE1F7B00D84809 /* PLBackdropView.h in Headers */ = {isa = PBXBuildFile; fileRef = CD7C504B1CBE1F7B00D84809 /* PLBackdropView.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -57,6 +60,9 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		CD4785271CBE628E00DCA1D3 /* PLMenuDetailComboView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PLMenuDetailComboView.swift; sourceTree = "<group>"; };
+		CD4785291CBE62C900DCA1D3 /* PLMenuDetailDescView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PLMenuDetailDescView.swift; sourceTree = "<group>"; };
+		CD47852B1CBE655900DCA1D3 /* PLMenuDetailView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PLMenuDetailView.swift; sourceTree = "<group>"; };
 		CD7C504B1CBE1F7B00D84809 /* PLBackdropView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PLBackdropView.h; sourceTree = "<group>"; };
 		CD7C504C1CBE1F7B00D84809 /* PLBackdropView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PLBackdropView.m; sourceTree = "<group>"; };
 		CD7C504D1CBE1F7B00D84809 /* PLBackdropViewSettings.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PLBackdropViewSettings.h; sourceTree = "<group>"; };
@@ -145,6 +151,9 @@
 				CD8C3CE91CBD39FB000D394F /* PLMenuBar.h */,
 				CD8C3CEB1CBD39FB000D394F /* Info.plist */,
 				CD8C3D131CBD3B95000D394F /* PLMenuBarView.swift */,
+				CD4785271CBE628E00DCA1D3 /* PLMenuDetailComboView.swift */,
+				CD4785291CBE62C900DCA1D3 /* PLMenuDetailDescView.swift */,
+				CD47852B1CBE655900DCA1D3 /* PLMenuDetailView.swift */,
 			);
 			path = PLMenuBar;
 			sourceTree = "<group>";
@@ -315,9 +324,12 @@
 			buildActionMask = 2147483647;
 			files = (
 				CD7C50541CBE1F7B00D84809 /* PLBackdropViewSettings.m in Sources */,
+				CD47852A1CBE62C900DCA1D3 /* PLMenuDetailDescView.swift in Sources */,
 				CD7C50561CBE1F7B00D84809 /* PLBackdropViewSettingsATVMenuLight.m in Sources */,
 				CD7C50521CBE1F7B00D84809 /* PLBackdropView.m in Sources */,
+				CD47852C1CBE655900DCA1D3 /* PLMenuDetailView.swift in Sources */,
 				CD8C3D141CBD3B95000D394F /* PLMenuBarView.swift in Sources */,
+				CD4785281CBE628E00DCA1D3 /* PLMenuDetailComboView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

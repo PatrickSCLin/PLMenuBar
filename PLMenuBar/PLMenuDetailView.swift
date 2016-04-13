@@ -6,8 +6,8 @@
 //  Copyright © 2016 Patrick Lin. All rights reserved.
 //
 
-import Cocoa
-
 class PLMenuDetailView: UIView {
+    
+    
 
 }

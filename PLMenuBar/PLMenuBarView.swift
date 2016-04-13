@@ -82,13 +82,13 @@ public class PLMenuDetailItem: NSObject {
 
 public class PLMenuBarView: UIView, UITabBarDelegate, UITableViewDelegate {
     
-    private let MenuBarMinHeight: CGFloat = 140;
+    static let MenuBarMinHeight: CGFloat = 140;
     
-    private let MenuBarDetailMinHeight: CGFloat = 210;
+    static let MenuBarDetailMinHeight: CGFloat = 210;
     
-    private let MenuBarDetailPadding: CGFloat = 150;
+    static let MenuBarDetailPadding: CGFloat = 150;
     
-    private let MenuBarBorderHeight: CGFloat = 1.5;
+    static let MenuBarBorderHeight: CGFloat = 1.5;
     
     private var shouldShowDetailView: Bool = false;
     
@@ -114,35 +114,59 @@ public class PLMenuBarView: UIView, UITabBarDelegate, UITableViewDelegate {
         
         if detailItem != nil && ((detailItem! is PLMenuDetailDescItem) || (detailItem! is PLMenuDetailComboItem)) {
             
+            if self.contentView != nil {
+                
+                self.contentView?.removeFromSuperview();
+                
+                self.contentView = nil;
+                
+            }
+            
             if detailItem is PLMenuDetailDescItem {
                 
-                if self.contentView != nil {
-                    
-                    self.contentView?.removeFromSuperview();
-                    
-                    self.contentView = nil;
                 
-                }
-                
-                let content: UILabel = UILabel(frame: CGRectMake(self.MenuBarDetailPadding, 0, self.bounds.size.width - (self.MenuBarDetailPadding * 2), self.MenuBarDetailMinHeight));
-                
-                content.numberOfLines = 0;
-                
-                content.font = UIFont.systemFontOfSize(18);
-                
-                content.textAlignment = NSTextAlignment.Center;
-                
-                content.text = (detailItem as! PLMenuDetailDescItem).text;
-                
-                self.contentView = content;
-                
-                self.detailView.addSubview(self.contentView!);
                 
             }
             
             else if detailItem is PLMenuDetailComboItem {
                 
+                let detailItem = (detailItem as! PLMenuDetailComboItem);
                 
+                let contentWidth = (self.bounds.size.width - (self.MenuBarDetailPadding * 2)) / CGFloat(detailItem.items.count);
+                
+                for (index, item) in detailItem.items.enumerate() {
+                    
+                    let content = UIView(frame: CGRectMake(self.MenuBarDetailPadding + contentWidth * CGFloat(index), 0, contentWidth, self.MenuBarDetailMinHeight));
+                    
+                    let titleOfSection: UILabel = UILabel(frame: CGRectMake(30, 20, content.bounds.size.width - 30, 40));
+                    
+                    titleOfSection.font = UIFont.boldSystemFontOfSize(18);
+                    
+                    titleOfSection.alpha = 0.4;
+                    
+                    titleOfSection.textAlignment = NSTextAlignment.Left;
+                    
+                    titleOfSection.text = item.title;
+                    
+                    content.addSubview(titleOfSection);
+                    
+                    for (index, item) in item.items.enumerate() {
+                        
+                        let titleOfSection: UILabel = UILabel(frame: CGRectMake(30, 20, content.bounds.size.width - 30, 40));
+                        
+                        titleOfSection.font = UIFont.boldSystemFontOfSize(18);
+                        
+                        titleOfSection.alpha = 0.4;
+                        
+                        titleOfSection.textAlignment = NSTextAlignment.Left;
+                        
+                        titleOfSection.text = item;
+                        
+                    }
+                    
+                    self.detailView.addSubview(content);
+                    
+                }
                 
             }
             
