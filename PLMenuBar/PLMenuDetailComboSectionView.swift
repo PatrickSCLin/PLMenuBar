@@ -12,6 +12,8 @@ class PLMenuDetailComboSectionView: UIView {
     
     var titleView: UILabel = UILabel();
     
+    var rowViews: [PLMenuDetailComboRowView] = [PLMenuDetailComboRowView]();
+    
     // MARK: Public Methods
     
     override func layoutSubviews() {
@@ -19,6 +21,12 @@ class PLMenuDetailComboSectionView: UIView {
         super.layoutSubviews();
         
         self.titleView.frame = CGRectMake(30, 20, self.bounds.size.width - 30, 40);
+        
+        for (index, rowView) in self.rowViews.enumerate() {
+            
+            rowView.frame = CGRectMake(0, 60 + CGFloat(40 * index), self.bounds.size.width, 40);
+            
+        }
         
     }
     
@@ -36,13 +44,23 @@ class PLMenuDetailComboSectionView: UIView {
         
         self.addSubview(titleView);
         
+        for (_, titleOfRow) in self.item.items.enumerate() {
+            
+            let rowView = PLMenuDetailComboRowView(title: titleOfRow);
+            
+            self.addSubview(rowView);
+            
+            self.rowViews.append(rowView);
+            
+        }
+        
     }
     
     convenience init(item: PLMenuComboSection) {
         
         self.init(frame: CGRectZero);
         
-        self.item.title = item.title;
+        self.item.title.appendContentsOf(item.title);
         
         self.item.items.appendContentsOf(item.items);
         
