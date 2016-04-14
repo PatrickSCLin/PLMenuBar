@@ -6,6 +6,6 @@ PLMenuBar is a customized menubar for tvOS, simple and easy to use.
   - Support combo detail view
   - Magic
 
-![alt tag](http://i.imgur.com/KehrJI3.png)
-
-![alt tag](http://i.imgur.com/t3izApR.png)
+Desc View             |  Combo View
+:-------------------------:|:-------------------------:
+![](http://i.imgur.com/KehrJI3.png)  |  ![](http://i.imgur.com/t3izApR.png)
