@@ -50,14 +50,17 @@ class ViewController: UIViewController, PLMenuBarDelegate {
         
         super.viewDidLoad();
         
-        let testString = "The audio element is used to play background audio for a document when the document is the top-most document in the navigation stack. Each document page that plays audio in the background must have its own audio element. If the same URL is used between pages, audio will continue to play when the new page is displayed. The audio element only supports unencrypted audio. audio can contain the following elements:";
+        let testString = "Every page in a client-server app is built on a TVML template. TVML templates define what elements can be used and in what order. Each template is designed to display information in a specific way. For example, the loadingTemplate shows a spinner and a quick description of what is happening, while the ratingTemplate shows the rating for a product. You create a new TVML file that contains a single template for each page in a client-server app. Each template page occupies the entire TV screen. \n\nEach template page uses compound and simple elements. Compound elements contain other elements, while simple elements are single lines of TVML. Elements contain the information and images that are displayed on the screen.";
         
         self.menuDetailItems = [
-            PLMenuDetailDescItem(title: "Info", text: testString),
-            PLMenuDetailItem(title: "Empty"),
-            PLMenuDetailComboItem(title: "Options", items: [
-                PLMenuComboSection(title: "Stream", items: ["Stream1", "Stream2"], preferredIndex: 1),
-                PLMenuComboSection(title: "Audio", items: ["On", "Off"], preferredIndex: 1)
+            PLMenuDetailDescItem(title: "TabBarItem with Desc", text: testString),
+            PLMenuDetailItem(title: "TabBarItem with Nothing"),
+            PLMenuDetailComboItem(title: "TabBarItem with Combo", items: [
+                PLMenuComboSection(title: "Section1", items: ["option1", "option2"], preferredIndex: 1),
+                PLMenuComboSection(title: "Section2", items: ["option1", "option2"], preferredIndex: 0),
+                PLMenuComboSection(title: "Section3", items: ["option1", "option2"], preferredIndex: 1),
+                PLMenuComboSection(title: "Section4", items: ["option1", "option2"], preferredIndex: 0),
+                PLMenuComboSection(title: "Section5", items: ["option1", "option2"], preferredIndex: 1),
             ])
         ];
         
