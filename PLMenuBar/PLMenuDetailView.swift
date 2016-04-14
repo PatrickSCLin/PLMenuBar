@@ -6,7 +6,7 @@
 //  Copyright © 2016 Patrick Lin. All rights reserved.
 //
 
-class PLMenuDetailView: UIView {
+public class PLMenuDetailView: UIView {
     
     var contentViews: [UIView] = [UIView]();
 

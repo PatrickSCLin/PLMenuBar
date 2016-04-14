@@ -86,7 +86,7 @@ public class PLMenuDetailItem: NSObject {
     
 }
 
-public class PLMenuBarView: UIView, UITabBarDelegate, UITableViewDelegate {
+public class PLMenuBarView: UIView, UITabBarDelegate, UITableViewDelegate, PLMenuDetailComboViewDelegate {
     
     static let MenuBarMinHeight: CGFloat = 140;
     
@@ -98,15 +98,25 @@ public class PLMenuBarView: UIView, UITabBarDelegate, UITableViewDelegate {
     
     private var shouldShowDetailView: Bool = false;
     
+    private var guides: [UIFocusGuide] = [UIFocusGuide]();
+    
     private var menuBar: UITabBar!;
     
     private var detailView: PLBackdropView!;
     
     private var borderView: UIView!;
     
-    private var contentView: UIView?;
+    private var contentView: PLMenuDetailView?;
     
     public var delegate: PLMenuBarDelegate?;
+    
+    // MARK: Combo Delegate Methods
+    
+    public func combo(combo: PLMenuDetailComboView, didChangeValueAtSection section: Int, Row row: Int) {
+        
+        self.delegate?.menuBar?(self, didSelectDetailAtRow: row, Section: section, forItemAtIndex: (self.menuBar.selectedItem?.tag)!);
+        
+    }
     
     // MARK: Tabbar Delegate Methods
     
@@ -119,6 +129,14 @@ public class PLMenuBarView: UIView, UITabBarDelegate, UITableViewDelegate {
         let detailItem = self.delegate!.menuBar?(self, detailItemForItemAtIndex: index);
         
         if detailItem != nil && ((detailItem! is PLMenuDetailDescItem) || (detailItem! is PLMenuDetailComboItem)) {
+            
+            for (_, guide) in self.guides.enumerate() {
+                
+                guide.owningView?.removeLayoutGuide(guide);
+                
+            }
+            
+            self.guides.removeAll();
             
             if self.contentView != nil {
                 
@@ -134,17 +152,47 @@ public class PLMenuBarView: UIView, UITabBarDelegate, UITableViewDelegate {
                 
                 self.contentView = PLMenuDetailDescView(text: (detailItem as! PLMenuDetailDescItem).text);
                 
+                self.contentView!.frame = contentFrame;
+                
+                self.detailView.addSubview(self.contentView!);
+                
             }
             
             else if detailItem is PLMenuDetailComboItem {
                 
                 self.contentView = PLMenuDetailComboView(items: (detailItem as! PLMenuDetailComboItem).items);
                 
+                (self.contentView as! PLMenuDetailComboView).delegate = self;
+                
+                self.contentView!.frame = contentFrame;
+                
+                self.detailView.addSubview(self.contentView!);
+                
+                for (_, sectionView) in self.contentView!.contentViews.enumerate() {
+                    
+                    for (_, rowView) in (sectionView as! PLMenuDetailComboSectionView).rowViews.enumerate() {
+                        
+                        let guide = UIFocusGuide();
+                        
+                        self.addLayoutGuide(guide);
+                        
+                        guide.preferredFocusedView = rowView.contentBtn;
+                        
+                        guide.topAnchor.constraintEqualToAnchor(rowView.contentBtn.topAnchor).active = true;
+                        
+                        guide.leftAnchor.constraintEqualToAnchor(rowView.contentBtn.leftAnchor).active = true;
+                        
+                        guide.widthAnchor.constraintEqualToAnchor(rowView.contentBtn.widthAnchor).active = true;
+                        
+                        guide.heightAnchor.constraintEqualToAnchor(rowView.contentBtn.heightAnchor).active = true;
+                        
+                        self.guides.append(guide);
+                        
+                    }
+                    
+                }
+                
             }
-            
-            self.contentView!.frame = contentFrame;
-            
-            self.detailView.addSubview(self.contentView!);
             
             self.shouldShowDetailView = true;
             
@@ -169,7 +217,7 @@ public class PLMenuBarView: UIView, UITabBarDelegate, UITableViewDelegate {
         super.layoutSubviews();
         
         if self.shouldShowDetailView == true {
-            
+
             self.borderView.hidden = false;
             
             self.contentView?.alpha = 0;

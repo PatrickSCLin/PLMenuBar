@@ -15,6 +15,8 @@ class ViewController: UIViewController, PLMenuBarDelegate {
     
     var menuDetailItems: [PLMenuDetailItem]!;
     
+    // MARK: PLMenuBar Delegate Methods
+    
     func numberOfItemsInMenubar() -> Int {
         
         return self.menuDetailItems.count;
@@ -32,23 +34,27 @@ class ViewController: UIViewController, PLMenuBarDelegate {
         return self.menuDetailItems[index];
         
     }
+    
+    func menuBar(menuBar: PLMenuBarView, didSelectDetailAtRow row: Int, Section section: Int, forItemAtIndex index: Int) {
+        
+        print("index: \(index), section: \(section), row: \(row)");
+        
+        ((self.menuDetailItems[index] as! PLMenuDetailComboItem).items[section]).preferredIndex = row;
+        
+    }
+
+    
+    // MARK: Init Methods
 
     override func viewDidLoad() {
         
         super.viewDidLoad();
         
-//        let testString = "The audio element is used to play background audio for a document when the document is the top-most document in the navigation stack. Each document page that plays audio in the background must have its own audio element. If the same URL is used between pages, audio will continue to play when the new page is displayed. The audio element only supports unencrypted audio. audio can contain the following elements:";
-//        
-//        self.menuDetailItems = [
-//            PLMenuDetailDescItem(title: "Info", text: testString),
-//            PLMenuDetailItem(title: "Empty"),
-//            PLMenuDetailComboItem(title: "Options", items: [
-//                PLMenuComboSection(title: "Stream", items: ["Stream1", "Stream2"], preferredIndex: 1),
-//                PLMenuComboSection(title: "Audio", items: ["On", "Off"], preferredIndex: 1)
-//            ])
-//        ];
+        let testString = "The audio element is used to play background audio for a document when the document is the top-most document in the navigation stack. Each document page that plays audio in the background must have its own audio element. If the same URL is used between pages, audio will continue to play when the new page is displayed. The audio element only supports unencrypted audio. audio can contain the following elements:";
         
         self.menuDetailItems = [
+            PLMenuDetailDescItem(title: "Info", text: testString),
+            PLMenuDetailItem(title: "Empty"),
             PLMenuDetailComboItem(title: "Options", items: [
                 PLMenuComboSection(title: "Stream", items: ["Stream1", "Stream2"], preferredIndex: 1),
                 PLMenuComboSection(title: "Audio", items: ["On", "Off"], preferredIndex: 1)
@@ -60,7 +66,7 @@ class ViewController: UIViewController, PLMenuBarDelegate {
         self.menuBar.delegate = self;
         
         self.view.addSubview(menuBar);
-        
+    
     }
     
 }

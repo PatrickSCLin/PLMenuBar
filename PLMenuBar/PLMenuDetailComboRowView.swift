@@ -24,11 +24,7 @@ class PLMenuDetailComboRowView: UIView {
     var isHighLighted: Bool = false {
         didSet
         {
-            if self.isSelected != oldValue {
-                
-                self.updateStyle();
-                
-            }
+            self.updateStyle();
         }
     }
     
@@ -45,8 +41,6 @@ class PLMenuDetailComboRowView: UIView {
         self.checkBoxView.frame = CGRectMake(8, 0, 22, self.bounds.size.height);
         
         self.contentBtn.frame = CGRectMake(30, 0, self.bounds.size.width - 30, self.bounds.size.height);
-        
-        print("focus: \(self.contentBtn.canBecomeFocused())");
         
     }
     

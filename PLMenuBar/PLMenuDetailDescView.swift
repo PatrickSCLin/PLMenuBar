@@ -6,13 +6,13 @@
 //  Copyright © 2016 Patrick Lin. All rights reserved.
 //
 
-class PLMenuDetailDescView: PLMenuDetailView {
+public class PLMenuDetailDescView: PLMenuDetailView {
     
     var text: String = "";
     
     // MARK: Public Methods
     
-    override func layoutSubviews() {
+    override public func layoutSubviews() {
         
         super.layoutSubviews();
      
