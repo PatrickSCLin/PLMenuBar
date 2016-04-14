@@ -28,6 +28,54 @@ class PLMenuDetailComboView: PLMenuDetailView {
         
     }
     
+    override func didUpdateFocusInContext(context: UIFocusUpdateContext, withAnimationCoordinator coordinator: UIFocusAnimationCoordinator) {
+        
+        if context.nextFocusedView != nil {
+            
+            for (indexOfSection, contentView) in self.contentViews.enumerate() {
+                
+                let sectionView = contentView as! PLMenuDetailComboSectionView;
+                
+                for (indexOfRow, rowView) in sectionView.rowViews.enumerate() {
+                    
+                    if rowView.contentBtn == context.nextFocusedView! {
+                        
+                        rowView.isHighLighted = true;
+                        
+                        print("next => section: \(indexOfSection), row: \(indexOfRow)");
+                        
+                    }
+                    
+                }
+                
+            }
+            
+        }
+        
+        if context.previouslyFocusedView != nil {
+            
+            for (indexOfSection, contentView) in self.contentViews.enumerate() {
+                
+                let sectionView = contentView as! PLMenuDetailComboSectionView;
+                
+                for (indexOfRow, rowView) in sectionView.rowViews.enumerate() {
+                    
+                    if rowView.contentBtn == context.previouslyFocusedView! {
+                        
+                        rowView.isHighLighted = false;
+                        
+                        print("previous => section: \(indexOfSection), row: \(indexOfRow)");
+                        
+                    }
+                    
+                }
+                
+            }
+            
+        }
+        
+    }
+    
     // MARK: Init Methods
     
     func commonInit() {

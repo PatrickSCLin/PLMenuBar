@@ -28,7 +28,7 @@ class PLMenuDetailDescView: PLMenuDetailView {
         
         content.numberOfLines = 0;
         
-        content.font = UIFont.systemFontOfSize(18);
+        content.font = UIFont.systemFontOfSize(20);
         
         content.textAlignment = NSTextAlignment.Justified;
         

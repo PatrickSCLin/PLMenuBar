@@ -37,11 +37,18 @@ class ViewController: UIViewController, PLMenuBarDelegate {
         
         super.viewDidLoad();
         
-        let testString = "The audio element is used to play background audio for a document when the document is the top-most document in the navigation stack. Each document page that plays audio in the background must have its own audio element. If the same URL is used between pages, audio will continue to play when the new page is displayed. The audio element only supports unencrypted audio. audio can contain the following elements:";
+//        let testString = "The audio element is used to play background audio for a document when the document is the top-most document in the navigation stack. Each document page that plays audio in the background must have its own audio element. If the same URL is used between pages, audio will continue to play when the new page is displayed. The audio element only supports unencrypted audio. audio can contain the following elements:";
+//        
+//        self.menuDetailItems = [
+//            PLMenuDetailDescItem(title: "Info", text: testString),
+//            PLMenuDetailItem(title: "Empty"),
+//            PLMenuDetailComboItem(title: "Options", items: [
+//                PLMenuComboSection(title: "Stream", items: ["Stream1", "Stream2"], preferredIndex: 1),
+//                PLMenuComboSection(title: "Audio", items: ["On", "Off"], preferredIndex: 1)
+//            ])
+//        ];
         
         self.menuDetailItems = [
-            PLMenuDetailDescItem(title: "Info", text: testString),
-            PLMenuDetailItem(title: "Empty"),
             PLMenuDetailComboItem(title: "Options", items: [
                 PLMenuComboSection(title: "Stream", items: ["Stream1", "Stream2"], preferredIndex: 1),
                 PLMenuComboSection(title: "Audio", items: ["On", "Off"], preferredIndex: 1)

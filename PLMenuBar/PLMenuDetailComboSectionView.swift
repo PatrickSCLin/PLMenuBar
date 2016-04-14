@@ -20,11 +20,11 @@ class PLMenuDetailComboSectionView: UIView {
         
         super.layoutSubviews();
         
-        self.titleView.frame = CGRectMake(30, 20, self.bounds.size.width - 30, 40);
+        self.titleView.frame = CGRectMake(40, 20, self.bounds.size.width - 40, 40);
         
         for (index, rowView) in self.rowViews.enumerate() {
             
-            rowView.frame = CGRectMake(0, 60 + CGFloat(40 * index), self.bounds.size.width, 40);
+            rowView.frame = CGRectMake(0, 70 + CGFloat(60 * index), self.bounds.size.width, 40);
             
         }
         

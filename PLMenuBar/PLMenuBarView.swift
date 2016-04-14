@@ -94,7 +94,7 @@ public class PLMenuBarView: UIView, UITabBarDelegate, UITableViewDelegate {
     
     static let MenuBarDetailPadding: CGFloat = 150;
     
-    static let MenuBarBorderHeight: CGFloat = 1.5;
+    static let MenuBarBorderHeight: CGFloat = 1;
     
     private var shouldShowDetailView: Bool = false;
     
@@ -172,11 +172,15 @@ public class PLMenuBarView: UIView, UITabBarDelegate, UITableViewDelegate {
             
             self.borderView.hidden = false;
             
+            self.contentView?.alpha = 0;
+            
             UIView.animateWithDuration(0.3, delay: 0, options: UIViewAnimationOptions.CurveEaseIn, animations: {
                 
                 self.menuBar.frame = CGRectMake(0, 0, self.frame.size.width, PLMenuBarView.MenuBarMinHeight);
                 
                 self.detailView.frame = CGRectMake(0, PLMenuBarView.MenuBarMinHeight, self.frame.size.width, PLMenuBarView.MenuBarDetailMinHeight);
+                
+                self.contentView?.alpha = 1;
                 
                 self.borderView.frame = CGRectMake(0, PLMenuBarView.MenuBarMinHeight, self.frame.size.width, PLMenuBarView.MenuBarBorderHeight);
                 
@@ -197,6 +201,8 @@ public class PLMenuBarView: UIView, UITabBarDelegate, UITableViewDelegate {
                 self.menuBar.frame = CGRectMake(0, 0, self.frame.size.width, PLMenuBarView.MenuBarMinHeight);
                 
                 self.detailView.frame = CGRectMake(0, PLMenuBarView.MenuBarMinHeight, self.frame.size.width, 0);
+                
+                self.contentView?.alpha = 0;
                 
                 self.borderView.frame = CGRectMake(0, PLMenuBarView.MenuBarMinHeight, self.frame.size.width, PLMenuBarView.MenuBarBorderHeight);
                 
@@ -262,11 +268,13 @@ public class PLMenuBarView: UIView, UITabBarDelegate, UITableViewDelegate {
         
         self.detailView.backgroundColor = UIColor(white: 1, alpha: 0.3);
         
+        self.detailView.clipsToBounds = true;
+        
         self.addSubview(self.detailView);
         
         self.borderView = UIView();
         
-        self.borderView.backgroundColor = UIColor(red: 127/255, green: 127/255, blue: 127/255, alpha: 0.8);
+        self.borderView.backgroundColor = UIColor(red: 135/255, green: 135/255, blue: 135/255, alpha: 0.2);
         
         self.addSubview(self.borderView);
         
