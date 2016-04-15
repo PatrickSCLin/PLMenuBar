@@ -2,11 +2,9 @@
 
 PLMenuBar is a customized menubar for tvOS, simple and easy to use.
 
-####Snapshots
+####Preview
 
-Desc View             |  Combo View
-:-------------------------:|:-------------------------:
-![](http://i.imgur.com/KehrJI3.png)  |  ![](http://i.imgur.com/t3izApR.png)
+![preview](http://i.imgur.com/i5WkB1s.gif)
 
 ####Requirement 
 
