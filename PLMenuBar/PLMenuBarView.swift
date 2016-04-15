@@ -196,7 +196,7 @@ public class PLMenuBarView: UIView, UITabBarDelegate, UITableViewDelegate, PLMen
             
             self.shouldShowDetailView = true;
             
-            self.frame = CGRectMake(0, 0, (self.superview?.frame.size.width)!, PLMenuBarView.MenuBarMinHeight + PLMenuBarView.MenuBarBorderHeight);
+            self.frame = CGRectMake(0, 0, (self.superview?.frame.size.width)!, PLMenuBarView.MenuBarMinHeight + PLMenuBarView.MenuBarDetailMinHeight);
             
         }
         

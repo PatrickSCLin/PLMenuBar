@@ -19,7 +19,7 @@ class ViewController: UIViewController, PLMenuBarDelegate {
     {
         get
         {
-            return (self.menuBar.hidden == false) ? self.view : nil;
+            return (self.menuBar.hidden == true) ? self.view : nil;
         }
     }
     
@@ -59,7 +59,7 @@ class ViewController: UIViewController, PLMenuBarDelegate {
             
             if UIScreen.mainScreen().focusedView != nil && NSStringFromClass(UIScreen.mainScreen().focusedView!.classForCoder) == "UITabBarButton" {
                 
-                UIView.animateWithDuration(0.3, delay: 0, options: UIViewAnimationOptions.CurveEaseIn, animations: {
+                UIView.animateWithDuration(0.3, delay: 0, options: UIViewAnimationOptions.BeginFromCurrentState, animations: {
                    
                     self.menuBar.alpha = 0;
                     
@@ -85,7 +85,7 @@ class ViewController: UIViewController, PLMenuBarDelegate {
                 
                 self.menuBar.hidden = false;
                 
-                UIView.animateWithDuration(0.3, delay: 0, options: UIViewAnimationOptions.CurveEaseIn, animations: {
+                UIView.animateWithDuration(0.3, delay: 0, options: UIViewAnimationOptions.BeginFromCurrentState, animations: {
                     
                     self.menuBar.alpha = 1;
                     
