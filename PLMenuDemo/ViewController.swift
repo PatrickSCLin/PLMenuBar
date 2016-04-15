@@ -15,6 +15,14 @@ class ViewController: UIViewController, PLMenuBarDelegate {
     
     var menuDetailItems: [PLMenuDetailItem]!;
     
+    override var preferredFocusedView: UIView?
+    {
+        get
+        {
+            return (self.menuBar.hidden == false) ? self.view : nil;
+        }
+    }
+    
     // MARK: PLMenuBar Delegate Methods
     
     func numberOfItemsInMenubar() -> Int {
@@ -42,7 +50,60 @@ class ViewController: UIViewController, PLMenuBarDelegate {
         ((self.menuDetailItems[index] as! PLMenuDetailComboItem).items[section]).preferredIndex = row;
         
     }
-
+    
+    // MARK: Gesture Methods
+    
+    func swipe(gesture: UISwipeGestureRecognizer) {
+        
+        if gesture.direction == UISwipeGestureRecognizerDirection.Up {
+            
+            if UIScreen.mainScreen().focusedView != nil && NSStringFromClass(UIScreen.mainScreen().focusedView!.classForCoder) == "UITabBarButton" {
+                
+                UIView.animateWithDuration(0.3, delay: 0, options: UIViewAnimationOptions.CurveEaseIn, animations: {
+                   
+                    self.menuBar.alpha = 0;
+                    
+                    self.menuBar.frame = CGRectMake(0, self.menuBar.bounds.size.height * -1, self.menuBar.bounds.size.width, self.menuBar.bounds.size.height);
+                    
+                }, completion: { (isCompleted: Bool) in
+                    
+                    self.menuBar.hidden = true;
+                    
+                    self.setNeedsFocusUpdate();
+                    
+                    self.updateFocusIfNeeded();
+                    
+                });
+                
+            }
+            
+        }
+        
+        else if gesture.direction == UISwipeGestureRecognizerDirection.Down {
+            
+            if self.menuBar.hidden == true {
+                
+                self.menuBar.hidden = false;
+                
+                UIView.animateWithDuration(0.3, delay: 0, options: UIViewAnimationOptions.CurveEaseIn, animations: {
+                    
+                    self.menuBar.alpha = 1;
+                    
+                    self.menuBar.frame = CGRectMake(0, 0, self.menuBar.bounds.size.width, self.menuBar.bounds.size.height);
+                    
+                }, completion: { (isCompleted: Bool) in
+                    
+                    self.view.setNeedsFocusUpdate();
+                        
+                    self.view.updateFocusIfNeeded();
+                        
+                });
+                
+            }
+            
+        }
+        
+    }
     
     // MARK: Init Methods
 
@@ -69,6 +130,18 @@ class ViewController: UIViewController, PLMenuBarDelegate {
         self.menuBar.delegate = self;
         
         self.view.addSubview(menuBar);
+        
+        let gesture_up = UISwipeGestureRecognizer(target: self, action: #selector(ViewController.swipe(_:)));
+        
+        gesture_up.direction = UISwipeGestureRecognizerDirection.Up;
+        
+        let gesture_down = UISwipeGestureRecognizer(target: self, action: #selector(ViewController.swipe(_:)));
+        
+        gesture_down.direction = UISwipeGestureRecognizerDirection.Down;
+        
+        self.view.addGestureRecognizer(gesture_up);
+        
+        self.view.addGestureRecognizer(gesture_down);
     
     }
     
