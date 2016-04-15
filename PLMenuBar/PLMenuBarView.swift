@@ -96,6 +96,8 @@ public class PLMenuBarView: UIView, UITabBarDelegate, UITableViewDelegate, PLMen
     
     static let MenuBarBorderHeight: CGFloat = 1;
     
+    private var selectedIndexOfItem: Int = -1;
+    
     private var shouldShowDetailView: Bool = false;
     
     private var guides: [UIFocusGuide] = [UIFocusGuide]();
@@ -124,7 +126,9 @@ public class PLMenuBarView: UIView, UITabBarDelegate, UITableViewDelegate, PLMen
         
         let index = item.tag;
         
-        if self.delegate == nil { return; }
+        if self.delegate == nil || item.tag == self.selectedIndexOfItem { return; }
+        
+        self.selectedIndexOfItem = item.tag;
         
         let detailItem = self.delegate!.menuBar?(self, detailItemForItemAtIndex: index);
         
