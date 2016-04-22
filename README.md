@@ -1,3 +1,5 @@
+<meta name='keywords' content='tvOS, menu, menubar, menu-bar, custom, customization, customized, custom menu, custom menubar'>
+
 #PLMenuBar 
 
 PLMenuBar is a customized menubar for tvOS, simple and easy to use.
