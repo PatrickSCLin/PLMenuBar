@@ -10,12 +10,22 @@
 
 @class PLBackdropViewSettings;
 
+enum PLBackdropViewStyle
+{
+    PLBackdropViewStyleLight = 0,
+    PLBackdropViewStyleDark,
+};
+
 @interface PLBackdropView : UIView
 {
     @public
     
     id _backdropView;
+    
+    PLBackdropViewSettings* _settings;
 }
+
+@property(nonatomic, assign) enum PLBackdropViewStyle style;
 
 - (id)initWithFrame:(CGRect)frame settings:(PLBackdropViewSettings *)settings;
 

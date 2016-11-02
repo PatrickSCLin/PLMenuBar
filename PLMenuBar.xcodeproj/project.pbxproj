@@ -10,6 +10,8 @@
 		CD4785281CBE628E00DCA1D3 /* PLMenuDetailComboView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD4785271CBE628E00DCA1D3 /* PLMenuDetailComboView.swift */; };
 		CD47852A1CBE62C900DCA1D3 /* PLMenuDetailDescView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD4785291CBE62C900DCA1D3 /* PLMenuDetailDescView.swift */; };
 		CD47852C1CBE655900DCA1D3 /* PLMenuDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD47852B1CBE655900DCA1D3 /* PLMenuDetailView.swift */; };
+		CD72364F1DCA29A900AD3466 /* PLBackdropViewSettingsATVMenuDark.h in Headers */ = {isa = PBXBuildFile; fileRef = CD72364D1DCA29A900AD3466 /* PLBackdropViewSettingsATVMenuDark.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		CD7236501DCA29A900AD3466 /* PLBackdropViewSettingsATVMenuDark.m in Sources */ = {isa = PBXBuildFile; fileRef = CD72364E1DCA29A900AD3466 /* PLBackdropViewSettingsATVMenuDark.m */; };
 		CD7C4FCA1CBDF5B600D84809 /* PLMenuBar.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CD8C3CE61CBD39FB000D394F /* PLMenuBar.framework */; };
 		CD7C4FCB1CBDF5B600D84809 /* PLMenuBar.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = CD8C3CE61CBD39FB000D394F /* PLMenuBar.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		CD7C50511CBE1F7B00D84809 /* PLBackdropView.h in Headers */ = {isa = PBXBuildFile; fileRef = CD7C504B1CBE1F7B00D84809 /* PLBackdropView.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -66,6 +68,8 @@
 		CD4785271CBE628E00DCA1D3 /* PLMenuDetailComboView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PLMenuDetailComboView.swift; sourceTree = "<group>"; };
 		CD4785291CBE62C900DCA1D3 /* PLMenuDetailDescView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PLMenuDetailDescView.swift; sourceTree = "<group>"; };
 		CD47852B1CBE655900DCA1D3 /* PLMenuDetailView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PLMenuDetailView.swift; sourceTree = "<group>"; };
+		CD72364D1DCA29A900AD3466 /* PLBackdropViewSettingsATVMenuDark.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PLBackdropViewSettingsATVMenuDark.h; sourceTree = "<group>"; };
+		CD72364E1DCA29A900AD3466 /* PLBackdropViewSettingsATVMenuDark.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PLBackdropViewSettingsATVMenuDark.m; sourceTree = "<group>"; };
 		CD7C504B1CBE1F7B00D84809 /* PLBackdropView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PLBackdropView.h; sourceTree = "<group>"; };
 		CD7C504C1CBE1F7B00D84809 /* PLBackdropView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PLBackdropView.m; sourceTree = "<group>"; };
 		CD7C504D1CBE1F7B00D84809 /* PLBackdropViewSettings.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PLBackdropViewSettings.h; sourceTree = "<group>"; };
@@ -126,6 +130,8 @@
 				CD7C504E1CBE1F7B00D84809 /* PLBackdropViewSettings.m */,
 				CD7C504F1CBE1F7B00D84809 /* PLBackdropViewSettingsATVMenuLight.h */,
 				CD7C50501CBE1F7B00D84809 /* PLBackdropViewSettingsATVMenuLight.m */,
+				CD72364D1DCA29A900AD3466 /* PLBackdropViewSettingsATVMenuDark.h */,
+				CD72364E1DCA29A900AD3466 /* PLBackdropViewSettingsATVMenuDark.m */,
 			);
 			path = PLBackdropView;
 			sourceTree = "<group>";
@@ -203,6 +209,7 @@
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				CD72364F1DCA29A900AD3466 /* PLBackdropViewSettingsATVMenuDark.h in Headers */,
 				CD7C50551CBE1F7B00D84809 /* PLBackdropViewSettingsATVMenuLight.h in Headers */,
 				CD8C3CEA1CBD39FB000D394F /* PLMenuBar.h in Headers */,
 				CD7C50511CBE1F7B00D84809 /* PLBackdropView.h in Headers */,
@@ -275,17 +282,19 @@
 			isa = PBXProject;
 			attributes = {
 				LastSwiftUpdateCheck = 0720;
-				LastUpgradeCheck = 0720;
+				LastUpgradeCheck = 0810;
 				ORGANIZATIONNAME = "Patrick Lin";
 				TargetAttributes = {
 					CD8C3CE51CBD39FB000D394F = {
 						CreatedOnToolsVersion = 7.2.1;
+						LastSwiftMigration = 0810;
 					};
 					CD8C3CEF1CBD39FB000D394F = {
 						CreatedOnToolsVersion = 7.2.1;
 					};
 					CD8C3D031CBD3B24000D394F = {
 						CreatedOnToolsVersion = 7.2.1;
+						LastSwiftMigration = 0810;
 					};
 				};
 			};
@@ -345,6 +354,7 @@
 				CD7C50541CBE1F7B00D84809 /* PLBackdropViewSettings.m in Sources */,
 				CD47852A1CBE62C900DCA1D3 /* PLMenuDetailDescView.swift in Sources */,
 				CD7C50561CBE1F7B00D84809 /* PLBackdropViewSettingsATVMenuLight.m in Sources */,
+				CD7236501DCA29A900AD3466 /* PLBackdropViewSettingsATVMenuDark.m in Sources */,
 				CD7C50521CBE1F7B00D84809 /* PLBackdropView.m in Sources */,
 				CD47852C1CBE655900DCA1D3 /* PLMenuDetailView.swift in Sources */,
 				CDA34F931CBE9927003AD6F6 /* PLMenuDetailComboSectionView.swift in Sources */,
@@ -410,8 +420,10 @@
 				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
 				CLANG_WARN_EMPTY_BODY = YES;
 				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				COPY_PHASE_STRIP = NO;
@@ -457,8 +469,10 @@
 				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
 				CLANG_WARN_EMPTY_BODY = YES;
 				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				COPY_PHASE_STRIP = NO;
@@ -476,6 +490,7 @@
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				SDKROOT = appletvos;
+				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
 				TARGETED_DEVICE_FAMILY = 3;
 				TVOS_DEPLOYMENT_TARGET = 9.1;
 				VALIDATE_PRODUCT = YES;
@@ -488,6 +503,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				CLANG_ENABLE_MODULES = YES;
+				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
 				DEFINES_MODULE = YES;
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
@@ -499,6 +515,7 @@
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 3.0;
 			};
 			name = Debug;
 		};
@@ -506,6 +523,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				CLANG_ENABLE_MODULES = YES;
+				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
 				DEFINES_MODULE = YES;
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
@@ -516,6 +534,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.storeboot.PLMenuBar;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
+				SWIFT_VERSION = 3.0;
 			};
 			name = Release;
 		};
@@ -542,26 +561,28 @@
 		CD8C3D111CBD3B24000D394F /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = "App Icon & Top Shelf Image";
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
-				EMBEDDED_CONTENT_CONTAINS_SWIFT = YES;
 				INFOPLIST_FILE = PLMenuDemo/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.storeboot.PLMenuDemo;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 3.0;
 			};
 			name = Debug;
 		};
 		CD8C3D121CBD3B24000D394F /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = "App Icon & Top Shelf Image";
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
-				EMBEDDED_CONTENT_CONTAINS_SWIFT = YES;
 				INFOPLIST_FILE = PLMenuDemo/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.storeboot.PLMenuDemo;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 3.0;
 			};
 			name = Release;
 		};

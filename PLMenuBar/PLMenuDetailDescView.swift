@@ -6,17 +6,36 @@
 //  Copyright © 2016 Patrick Lin. All rights reserved.
 //
 
-public class PLMenuDetailDescView: PLMenuDetailView {
+open class PLMenuDetailDescView: PLMenuDetailView {
     
-    var text: String = "";
+    var text: String = ""
+    
+    var textColor: UIColor = UIColor.black {
+        didSet
+        {
+            if oldValue != self.textColor {
+                
+                for (_, contentView) in self.contentViews.enumerated() {
+                    
+                    if contentView is UILabel {
+                        
+                        (contentView as! UILabel).textColor = self.textColor
+                        
+                    }
+                    
+                }
+                
+            }
+        }
+    }
     
     // MARK: Public Methods
     
-    override public func layoutSubviews() {
+    override open func layoutSubviews() {
         
-        super.layoutSubviews();
+        super.layoutSubviews()
      
-        self.contentViews[0].frame = self.bounds;
+        self.contentViews[0].frame = self.bounds
         
     }
     
@@ -24,29 +43,29 @@ public class PLMenuDetailDescView: PLMenuDetailView {
     
     func commonInit() {
         
-        let content: UILabel = UILabel();
+        let content: UILabel = UILabel()
         
-        content.numberOfLines = 0;
+        content.numberOfLines = 0
         
-        content.font = UIFont.systemFontOfSize(20);
+        content.font = UIFont.systemFont(ofSize: 20)
         
-        content.textAlignment = NSTextAlignment.Justified;
+        content.textAlignment = NSTextAlignment.justified
         
-        content.text = self.text;
+        content.text = self.text
         
-        self.addSubview(content);
+        self.addSubview(content)
         
-        self.contentViews.append(content);
+        self.contentViews.append(content)
         
     }
     
     convenience init(text: String) {
         
-        self.init(frame: CGRectZero);
+        self.init(frame: CGRect.zero)
         
-        self.text.appendContentsOf(text);
+        self.text.append(text)
         
-        self.commonInit();
+        self.commonInit()
         
     }
 

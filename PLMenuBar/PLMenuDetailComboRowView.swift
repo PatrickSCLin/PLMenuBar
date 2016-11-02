@@ -8,14 +8,14 @@
 
 class PLMenuDetailComboRowView: UIView {
     
-    var title: String = "";
+    var title: String = ""
     
     var isSelected: Bool = false {
         didSet
         {
             if self.isSelected != oldValue {
                 
-                self.updateStyle();
+                self.updateStyle()
                 
             }
         }
@@ -24,23 +24,23 @@ class PLMenuDetailComboRowView: UIView {
     var isHighLighted: Bool = false {
         didSet
         {
-            self.updateStyle();
+            self.updateStyle()
         }
     }
     
-    var checkBoxView: UIImageView = UIImageView();
+    var checkBoxView: UIImageView = UIImageView()
     
-    var contentBtn: UIButton = UIButton();
+    var contentBtn: UIButton = UIButton()
     
     // MARK: Public Methods
     
     override func layoutSubviews() {
         
-        super.layoutSubviews();
+        super.layoutSubviews()
         
-        self.checkBoxView.frame = CGRectMake(8, 0, 22, self.bounds.size.height);
+        self.checkBoxView.frame = CGRect(x: 8, y: 0, width: 22, height: self.bounds.size.height)
         
-        self.contentBtn.frame = CGRectMake(30, 0, self.bounds.size.width - 30, self.bounds.size.height);
+        self.contentBtn.frame = CGRect(x: 30, y: 0, width: self.bounds.size.width - 30, height: self.bounds.size.height)
         
     }
     
@@ -48,13 +48,13 @@ class PLMenuDetailComboRowView: UIView {
     
     func updateStyle() {
         
-        self.checkBoxView.hidden = !self.isSelected;
+        self.checkBoxView.isHidden = !self.isSelected
         
-        let color = (self.isHighLighted == true) ? UIColor.whiteColor() : UIColor(red: 39/255, green: 33/255, blue: 29/255, alpha: 0.7);
+        let color = (self.isHighLighted == true) ? UIColor.white : UIColor(red: 39/255, green: 33/255, blue: 29/255, alpha: 0.7)
         
-        self.checkBoxView.tintColor = color;
+        self.checkBoxView.tintColor = color
         
-        self.contentBtn.setTitleColor(color, forState: UIControlState.Normal);
+        self.contentBtn.setTitleColor(color, for: UIControlState())
         
     }
     
@@ -62,47 +62,47 @@ class PLMenuDetailComboRowView: UIView {
     
     func commonInit() {
         
-        self.contentBtn.contentHorizontalAlignment = UIControlContentHorizontalAlignment.Left;
+        self.contentBtn.contentHorizontalAlignment = UIControlContentHorizontalAlignment.left
         
-        self.contentBtn.setTitle(title, forState: UIControlState.Normal);
+        self.contentBtn.setTitle(title, for: UIControlState())
         
         if self.contentBtn.titleLabel != nil {
             
-            self.contentBtn.titleLabel!.font = UIFont.boldSystemFontOfSize(28);
+            self.contentBtn.titleLabel!.font = UIFont.boldSystemFont(ofSize: 28)
             
-            self.contentBtn.titleEdgeInsets = UIEdgeInsets(top: 0, left: 10, bottom: 0, right: 0);
+            self.contentBtn.titleEdgeInsets = UIEdgeInsets(top: 0, left: 10, bottom: 0, right: 0)
             
         }
         
-        self.addSubview(self.contentBtn);
+        self.addSubview(self.contentBtn)
         
-        let bundle = NSBundle(forClass: PLMenuDetailComboRowView.self);
+        let bundle = Bundle(for: PLMenuDetailComboRowView.self)
         
-        var image = UIImage(named: "button-check.png", inBundle: bundle, compatibleWithTraitCollection: nil);
+        var image = UIImage(named: "button-check.png", in: bundle, compatibleWith: nil)
         
-        image = image?.imageWithRenderingMode(UIImageRenderingMode.AlwaysTemplate);
+        image = image?.withRenderingMode(UIImageRenderingMode.alwaysTemplate)
         
         if image != nil {
             
-            self.checkBoxView.image = image!;
+            self.checkBoxView.image = image!
             
-            self.checkBoxView.contentMode = UIViewContentMode.ScaleAspectFit;
+            self.checkBoxView.contentMode = UIViewContentMode.scaleAspectFit
             
         }
         
-        self.addSubview(self.checkBoxView);
+        self.addSubview(self.checkBoxView)
         
-        self.updateStyle();
+        self.updateStyle()
         
     }
     
     convenience init(title: String) {
         
-        self.init(frame: CGRectZero);
+        self.init(frame: CGRect.zero)
         
-        self.title.appendContentsOf(title);
+        self.title.append(title)
         
-        self.commonInit();
+        self.commonInit()
         
     }
 

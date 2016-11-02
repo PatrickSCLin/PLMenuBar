@@ -19,3 +19,4 @@ FOUNDATION_EXPORT const unsigned char PLMenuBarVersionString[];
 #import <PLMenuBar/PLBackdropView.h>
 #import <PLMenuBar/PLBackdropViewSettings.h>
 #import <PLMenuBar/PLBackdropViewSettingsATVMenuLight.h>
+#import <PLMenuBar/PLBackdropViewSettingsATVMenuDark.h>

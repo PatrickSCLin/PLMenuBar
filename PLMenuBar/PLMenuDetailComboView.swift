@@ -8,27 +8,27 @@
 
 @objc public protocol PLMenuDetailComboViewDelegate: NSObjectProtocol {
     
-    func combo(combo: PLMenuDetailComboView, didChangeValueAtSection section: Int, Row row: Int);
+    func combo(_ combo: PLMenuDetailComboView, didChangeValueAtSection section: Int, Row row: Int)
     
 }
 
-public class PLMenuDetailComboView: PLMenuDetailView, PLMenuDetailComboSectionViewDelegate {
+open class PLMenuDetailComboView: PLMenuDetailView, PLMenuDetailComboSectionViewDelegate {
 
-    var items: [PLMenuComboSection] = [PLMenuComboSection]();
+    var items: [PLMenuComboSection] = [PLMenuComboSection]()
     
-    public var delegate: PLMenuDetailComboViewDelegate?;
+    open var delegate: PLMenuDetailComboViewDelegate?
     
     // MARK: Combo Section Delegate Methods
     
-    func section(section: PLMenuDetailComboSectionView, didChangeValueAtRow row: Int) {
+    func section(_ section: PLMenuDetailComboSectionView, didChangeValueAtRow row: Int) {
         
-        for (indexOfSection, sectionView) in self.contentViews.enumerate() {
+        for (indexOfSection, sectionView) in self.contentViews.enumerated() {
             
             if sectionView == section {
                 
-                self.delegate?.combo(self, didChangeValueAtSection: indexOfSection, Row: row);
+                self.delegate?.combo(self, didChangeValueAtSection: indexOfSection, Row: row)
                 
-                break;
+                break
                 
             }
             
@@ -38,35 +38,35 @@ public class PLMenuDetailComboView: PLMenuDetailView, PLMenuDetailComboSectionVi
     
     // MARK: Public Methods
     
-    override public func layoutSubviews() {
+    override open func layoutSubviews() {
         
-        super.layoutSubviews();
+        super.layoutSubviews()
         
-        let contentWidth = self.bounds.size.width / CGFloat(self.items.count);
+        let contentWidth = self.bounds.size.width / CGFloat(self.items.count)
         
-        let contentHeight = self.bounds.size.height;
+        let contentHeight = self.bounds.size.height
         
-        for (index, content) in self.contentViews.enumerate() {
+        for (index, content) in self.contentViews.enumerated() {
             
-            content.frame = CGRectMake(contentWidth * CGFloat(index), 0, contentWidth, contentHeight);
+            content.frame = CGRect(x: contentWidth * CGFloat(index), y: 0, width: contentWidth, height: contentHeight)
             
         }
         
     }
     
-    override public func didUpdateFocusInContext(context: UIFocusUpdateContext, withAnimationCoordinator coordinator: UIFocusAnimationCoordinator) {
+    override open func didUpdateFocus(in context: UIFocusUpdateContext, with coordinator: UIFocusAnimationCoordinator) {
         
         if context.nextFocusedView != nil {
             
-            for (_, contentView) in self.contentViews.enumerate() {
+            for (_, contentView) in self.contentViews.enumerated() {
                 
-                let sectionView = contentView as! PLMenuDetailComboSectionView;
+                let sectionView = contentView as! PLMenuDetailComboSectionView
                 
-                for (_, rowView) in sectionView.rowViews.enumerate() {
+                for (_, rowView) in sectionView.rowViews.enumerated() {
                     
                     if rowView.contentBtn === context.nextFocusedView! {
                         
-                        rowView.isHighLighted = true;
+                        rowView.isHighLighted = true
                         
                     }
                     
@@ -78,15 +78,15 @@ public class PLMenuDetailComboView: PLMenuDetailView, PLMenuDetailComboSectionVi
         
         if context.previouslyFocusedView != nil {
             
-            for (_, contentView) in self.contentViews.enumerate() {
+            for (_, contentView) in self.contentViews.enumerated() {
                 
-                let sectionView = contentView as! PLMenuDetailComboSectionView;
+                let sectionView = contentView as! PLMenuDetailComboSectionView
                 
-                for (_, rowView) in sectionView.rowViews.enumerate() {
+                for (_, rowView) in sectionView.rowViews.enumerated() {
                     
                     if rowView.contentBtn === context.previouslyFocusedView! {
                         
-                        rowView.isHighLighted = false;
+                        rowView.isHighLighted = false
                         
                     }
                     
@@ -102,15 +102,15 @@ public class PLMenuDetailComboView: PLMenuDetailView, PLMenuDetailComboSectionVi
     
     func commonInit() {
         
-        for (_, item) in self.items.enumerate() {
+        for (_, item) in self.items.enumerated() {
             
-            let content = PLMenuDetailComboSectionView(item: item);
+            let content = PLMenuDetailComboSectionView(item: item)
             
-            content.delegate = self;
+            content.delegate = self
             
-            self.addSubview(content);
+            self.addSubview(content)
             
-            self.contentViews.append(content);
+            self.contentViews.append(content)
             
         }
         
@@ -118,11 +118,11 @@ public class PLMenuDetailComboView: PLMenuDetailView, PLMenuDetailComboSectionVi
     
     convenience init(items: [PLMenuComboSection]) {
         
-        self.init(frame: CGRectZero);
+        self.init(frame: CGRect.zero)
         
-        self.items.appendContentsOf(items);
+        self.items.append(contentsOf: items)
         
-        self.commonInit();
+        self.commonInit()
         
     }
     
